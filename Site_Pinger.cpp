@@ -33,6 +33,17 @@ bool checkWebStatus(const std::string& url) {
 
 int main()
 {
-	cout << "Hello CMake." << endl;
+	const std::string url = "https://www.google.ca/";
+	const std::chrono::seconds interval(5);
+
+	while (true) {
+		bool status = checkWebStatus(url);
+		if (status)
+			std::cout << "Website is up!" << std::endl;
+		else
+			std::cout << "Website is down!" << std::endl;
+		std::this_thread::sleep_for(interval);
+
+	}
 	return 0;
 }
